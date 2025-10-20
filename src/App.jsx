@@ -1,5 +1,8 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Login from './components/auth/Login';
+import Dashboard from './components/Dashboard';
+import Navbar from './components/layout/Navbar';
+import Sidebar from './components/layout/Sidebar';
 import authService from './services/authService';
 import './App.css';
 
@@ -7,19 +10,16 @@ function PrivateRoute({ children }) {
   return authService.isAuthenticated() ? children : <Navigate to="/login" />;
 }
 
-function Dashboard() {
-  const user = authService.getCurrentUser();
-  
-  const handleLogout = () => {
-    authService.logout();
-    window.location.href = '/login';
-  };
-
+function Layout({ children }) {
   return (
-    <div className="dashboard">
-      <h1>Bienvenido, {user?.nombreUsuario}</h1>
-      <p>Rol: {user?.rol}</p>
-      <button onClick={handleLogout}>Cerrar Sesión</button>
+    <div className="app-container">
+      <Navbar />
+      <div className="main-container">
+        <Sidebar />
+        <main className="main-content">
+          {children}
+        </main>
+      </div>
     </div>
   );
 }
@@ -33,7 +33,87 @@ function App() {
           path="/dashboard" 
           element={
             <PrivateRoute>
-              <Dashboard />
+              <Layout>
+                <Dashboard />
+              </Layout>
+            </PrivateRoute>
+          } 
+        />
+        <Route 
+          path="/pacientes" 
+          element={
+            <PrivateRoute>
+              <Layout>
+                <div style={{ padding: '30px' }}>
+                  <h1>Módulo de Pacientes</h1>
+                  <p>Próximamente...</p>
+                </div>
+              </Layout>
+            </PrivateRoute>
+          } 
+        />
+        <Route 
+          path="/medicos" 
+          element={
+            <PrivateRoute>
+              <Layout>
+                <div style={{ padding: '30px' }}>
+                  <h1>Módulo de Médicos</h1>
+                  <p>Próximamente...</p>
+                </div>
+              </Layout>
+            </PrivateRoute>
+          } 
+        />
+        <Route 
+          path="/citas" 
+          element={
+            <PrivateRoute>
+              <Layout>
+                <div style={{ padding: '30px' }}>
+                  <h1>Módulo de Citas</h1>
+                  <p>Próximamente...</p>
+                </div>
+              </Layout>
+            </PrivateRoute>
+          } 
+        />
+        <Route 
+          path="/consultas" 
+          element={
+            <PrivateRoute>
+              <Layout>
+                <div style={{ padding: '30px' }}>
+                  <h1>Módulo de Consultas</h1>
+                  <p>Próximamente...</p>
+                </div>
+              </Layout>
+            </PrivateRoute>
+          } 
+        />
+        <Route 
+          path="/hospitalizacion" 
+          element={
+            <PrivateRoute>
+              <Layout>
+                <div style={{ padding: '30px' }}>
+                  <h1>Módulo de Hospitalización</h1>
+                  <p>Próximamente...</p>
+                </div>
+              </Layout>
+            </PrivateRoute>
+          } 
+        />
+        <Route 
+          path="/facturacion" 
+          element={
+            <PrivateRoute>
+              <Layout>
+                <div style={{ padding: '30px' }}>
+                  <h1>Módulo de Facturación</h1>
+                  <p>Próximamente...</p>
+                </div>
+              </Layout>
             </PrivateRoute>
           } 
         />
