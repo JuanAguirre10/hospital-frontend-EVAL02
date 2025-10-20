@@ -13,6 +13,12 @@ import DetalleCita from './components/citas/DetalleCita';
 import ListaConsultas from './components/consultas/ListaConsultas';
 import FormConsulta from './components/consultas/FormConsulta';
 import DetalleConsulta from './components/consultas/DetalleConsulta';
+import ListaHospitalizaciones from './components/hospitalizacion/ListaHospitalizaciones';
+import FormHospitalizacion from './components/hospitalizacion/FormHospitalizacion';
+import DetalleHospitalizacion from './components/hospitalizacion/DetalleHospitalizacion';
+import ListaFacturas from './components/facturacion/ListaFacturas';
+import FormFactura from './components/facturacion/FormFactura';
+import DetalleFactura from './components/facturacion/DetalleFactura';
 import Navbar from './components/layout/Navbar';
 import Sidebar from './components/layout/Sidebar';
 import authService from './services/authService';
@@ -239,10 +245,40 @@ function App() {
           element={
             <PrivateRoute>
               <Layout>
-                <div style={{ padding: '30px' }}>
-                  <h1>Módulo de Hospitalización</h1>
-                  <p>Próximamente...</p>
-                </div>
+                <ListaHospitalizaciones />
+              </Layout>
+            </PrivateRoute>
+          } 
+        />
+
+        <Route 
+          path="/hospitalizacion/nuevo" 
+          element={
+            <PrivateRoute>
+              <Layout>
+                <FormHospitalizacion />
+              </Layout>
+            </PrivateRoute>
+          } 
+        />
+
+        <Route 
+          path="/hospitalizacion/editar/:id" 
+          element={
+            <PrivateRoute>
+              <Layout>
+                <FormHospitalizacion />
+              </Layout>
+            </PrivateRoute>
+          } 
+        />
+
+        <Route 
+          path="/hospitalizacion/:id" 
+          element={
+            <PrivateRoute>
+              <Layout>
+                <DetalleHospitalizacion />
               </Layout>
             </PrivateRoute>
           } 
@@ -254,10 +290,40 @@ function App() {
           element={
             <PrivateRoute>
               <Layout>
-                <div style={{ padding: '30px' }}>
-                  <h1>Módulo de Facturación</h1>
-                  <p>Próximamente...</p>
-                </div>
+                <ListaFacturas />
+              </Layout>
+            </PrivateRoute>
+          } 
+        />
+
+        <Route 
+          path="/facturacion/nuevo" 
+          element={
+            <PrivateRoute>
+              <Layout>
+                <FormFactura />
+              </Layout>
+            </PrivateRoute>
+          } 
+        />
+
+        <Route 
+          path="/facturacion/editar/:id" 
+          element={
+            <PrivateRoute>
+              <Layout>
+                <FormFactura />
+              </Layout>
+            </PrivateRoute>
+          } 
+        />
+
+        <Route 
+          path="/facturacion/:id" 
+          element={
+            <PrivateRoute>
+              <Layout>
+                <DetalleFactura />
               </Layout>
             </PrivateRoute>
           } 

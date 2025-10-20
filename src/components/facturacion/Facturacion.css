@@ -1,0 +1,19 @@
+@import '../pacientes/Pacientes.css';
+
+.factura-total {
+  font-size: 24px;
+  font-weight: bold;
+  color: #48bb78;
+}
+
+.detalles-section {
+  margin-top: 32px;
+  padding-top: 32px;
+  border-top: 2px solid #e2e8f0;
+}
+
+.detalles-section h3 {
+  font-size: 20px;
+  color: #1a202c;
+  margin-bottom: 16px;
+}
