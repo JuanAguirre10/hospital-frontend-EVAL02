@@ -11,6 +11,9 @@ import './App.css';
 import ListaMedicos from './components/medicos/ListaMedicos';
 import FormMedico from './components/medicos/FormMedico';
 import DetalleMedico from './components/medicos/DetalleMedico';
+import ListaCitas from './components/citas/ListaCitas';
+import FormCita from './components/citas/FormCita';
+import DetalleCita from './components/citas/DetalleCita';
 
 function PrivateRoute({ children }) {
   return authService.isAuthenticated() ? children : <Navigate to="/login" />;
@@ -136,18 +139,48 @@ function App() {
 />
         
         <Route 
-          path="/citas" 
-          element={
-            <PrivateRoute>
-              <Layout>
-                <div style={{ padding: '30px' }}>
-                  <h1>Módulo de Citas</h1>
-                  <p>Próximamente...</p>
-                </div>
-              </Layout>
-            </PrivateRoute>
-          } 
-        />
+  path="/citas" 
+  element={
+    <PrivateRoute>
+      <Layout>
+        <ListaCitas />
+      </Layout>
+    </PrivateRoute>
+  } 
+/>
+
+<Route 
+  path="/citas/nuevo" 
+  element={
+    <PrivateRoute>
+      <Layout>
+        <FormCita />
+      </Layout>
+    </PrivateRoute>
+  } 
+/>
+
+<Route 
+  path="/citas/editar/:id" 
+  element={
+    <PrivateRoute>
+      <Layout>
+        <FormCita />
+      </Layout>
+    </PrivateRoute>
+  } 
+/>
+
+<Route 
+  path="/citas/:id" 
+  element={
+    <PrivateRoute>
+      <Layout>
+        <DetalleCita />
+      </Layout>
+    </PrivateRoute>
+  } 
+/>
         
         <Route 
           path="/consultas" 

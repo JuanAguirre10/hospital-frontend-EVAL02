@@ -181,3 +181,14 @@
     padding: 20px;
   }
 }
+
+.no-activity {
+  text-align: center;
+  padding: 40px 20px;
+  color: #a0aec0;
+}
+
+.no-activity p {
+  margin: 0;
+  font-size: 14px;
+}
