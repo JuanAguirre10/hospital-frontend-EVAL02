@@ -1,0 +1,5 @@
+@import '../pacientes/Pacientes.css';
+
+.hospitalizacion-card {
+  background: linear-gradient(135deg, #ed8936 0%, #dd6b20 100%);
+}
