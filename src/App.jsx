@@ -8,6 +8,9 @@ import Navbar from './components/layout/Navbar';
 import Sidebar from './components/layout/Sidebar';
 import authService from './services/authService';
 import './App.css';
+import ListaMedicos from './components/medicos/ListaMedicos';
+import FormMedico from './components/medicos/FormMedico';
+import DetalleMedico from './components/medicos/DetalleMedico';
 
 function PrivateRoute({ children }) {
   return authService.isAuthenticated() ? children : <Navigate to="/login" />;
@@ -89,18 +92,48 @@ function App() {
         />
         
         <Route 
-          path="/medicos" 
-          element={
-            <PrivateRoute>
-              <Layout>
-                <div style={{ padding: '30px' }}>
-                  <h1>Módulo de Médicos</h1>
-                  <p>Próximamente...</p>
-                </div>
-              </Layout>
-            </PrivateRoute>
-          } 
-        />
+  path="/medicos" 
+  element={
+    <PrivateRoute>
+      <Layout>
+        <ListaMedicos />
+      </Layout>
+    </PrivateRoute>
+  } 
+/>
+
+<Route 
+  path="/medicos/nuevo" 
+  element={
+    <PrivateRoute>
+      <Layout>
+        <FormMedico />
+      </Layout>
+    </PrivateRoute>
+  } 
+/>
+
+<Route 
+  path="/medicos/editar/:id" 
+  element={
+    <PrivateRoute>
+      <Layout>
+        <FormMedico />
+      </Layout>
+    </PrivateRoute>
+  } 
+/>
+
+<Route 
+  path="/medicos/:id" 
+  element={
+    <PrivateRoute>
+      <Layout>
+        <DetalleMedico />
+      </Layout>
+    </PrivateRoute>
+  } 
+/>
         
         <Route 
           path="/citas" 
